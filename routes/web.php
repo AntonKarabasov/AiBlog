@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', IndexController::class);
+});
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', AdminIndexController::class);
+    });
 });
 
 Auth::routes();

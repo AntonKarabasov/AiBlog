@@ -21,14 +21,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::get('/', 'IndexController')->name('admin.index');
     });
 
-    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
-        Route::get('/', 'IndexController')->name('admin.categories.index');
-        Route::get('/create', 'CreateController')->name('admin.categories.create');
-        Route::post('/store', 'StoreController')->name('admin.categories.store');
-        Route::get('/{category}', 'ShowController')->name('admin.categories.show');
-        Route::get('/{category}/edit', 'EditController')->name('admin.categories.edit');
-        Route::patch('/{category}', 'UpdateController')->name('admin.categories.update');
-        Route::delete('/{category}', 'DeleteController')->name('admin.categories.delete');
+    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+        Route::get('/', 'IndexController')->name('admin.category.index');
+        Route::get('/create', 'CreateController')->name('admin.category.create');
+        Route::post('/store', 'StoreController')->name('admin.category.store');
+        Route::get('/{category}', 'ShowController')->name('admin.category.show');
+        Route::get('/{category}/edit', 'EditController')->name('admin.category.edit');
+        Route::patch('/{category}', 'UpdateController')->name('admin.category.update');
+        Route::delete('/{category}', 'DeleteController')->name('admin.category.delete');
     });
 });
 

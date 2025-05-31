@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>{{ asset('') }}
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -67,5 +69,24 @@
 <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- summernote -->
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+    $(function () {
+        // Summernote
+        $('#summernote').summernote({
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        })
+    })
+</script>
 </body>
 </html>

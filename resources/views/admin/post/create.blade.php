@@ -30,8 +30,8 @@
                     <form action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group w-25">
-                            <input type="text" class="form-control" name="name" placeholder="Название поста" value="{{ old('name') }}">
-                            @error('name')
+                            <input type="text" class="form-control" name="title" placeholder="Название поста" value="{{ old('title') }}">
+                            @error('title')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>

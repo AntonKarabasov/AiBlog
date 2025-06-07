@@ -46,7 +46,7 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>{{ $post->id }}</td>
-                                        <td>{{ $post->name }}</td>
+                                        <td>{{ $post->title }}</td>
                                         <td>
                                             <a href="{{ route('admin.post.show', $post->id) }}">
                                                 <i class="fa fa-eye"></i>

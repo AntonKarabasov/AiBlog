@@ -46,7 +46,7 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->title }}</td>
                                         <td>
                                             <a href="{{ route('admin.category.show', $category->id) }}">
                                                 <i class="fa fa-eye"></i>

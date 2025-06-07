@@ -46,7 +46,7 @@
                                 @foreach ($tags as $tag)
                                     <tr>
                                         <td>{{ $tag->id }}</td>
-                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->title }}</td>
                                         <td>
                                             <a href="{{ route('admin.tag.show', $tag->id) }}">
                                                 <i class="fa fa-eye"></i>

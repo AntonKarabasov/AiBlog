@@ -30,8 +30,8 @@
                     <form action="{{ route('admin.tag.store') }}" method="post" class="w-25">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Название тега">
-                            @error('name')
+                            <input type="text" class="form-control" name="title" placeholder="Название тега">
+                            @error('title')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>

@@ -46,8 +46,8 @@
                         </div>
                         <div class="form-group w-50">
                             <label for="exampleInputFile">Добавить превью</label>
-                            <div class="w-25">
-                                <img src="{{ asset($post->preview_image) }}" alt="" class="w-50">
+                            <div class="w-25 mb-2">
+                                <img src="{{ url('storage/' . $post->preview_image) }}" alt="" class="w-50">
                             </div>
                             <div class="input-group">
                                 <div class="custom-file">
@@ -64,8 +64,8 @@
                         </div>
                         <div class="form-group w-50">
                             <label for="exampleInputFile">Добавить главное изображение</label>
-                            <div class="w-25">
-                                <img src="{{ asset($post->main_image) }}" alt="" class="w-50">
+                            <div class="w-25 mb-2">
+                                <img src="{{ url('storage/' . $post->main_image) }}" alt="" class="w-50">
                             </div>
                             <div class="input-group">
                                 <div class="custom-file">
@@ -104,7 +104,9 @@
                                 aria-hidden="true"
                             >
                                 @foreach($tags as $tag)
-                                    <option value="{{ $tag->id }}" {{ is_array($post->tags->pluck('id')) && in_array($tag->id, $post->tags->pluck('id')) ? 'selected' : '' }}>
+                                    <option value="{{ $tag->id }}"
+                                        {{ is_array($post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }}
+                                    >
                                         {{ $tag->title }}
                                     </option>
                                 @endforeach

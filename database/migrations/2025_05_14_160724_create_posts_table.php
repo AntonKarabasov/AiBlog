@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
-            $table->UnsignedBigInteger('category_id')->nullable();
+            $table->string('name');
+            $table->text('content');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
 
             $table->index('category_id', 'post_category_idx');

@@ -39,10 +39,10 @@
                     <div class="card">
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>{{ $post->id }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>{{ $post->id }}</td>
+                                </tr>
                                 <tr>
                                     <td>Название</td>
                                     <td>{{ $post->name }}</td>

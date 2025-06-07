@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6 d-flex align-items-center">
-                    <h1 class="m-0 mr-2">{{ $tag->name }}</h1>
+                    <h1 class="m-0 mr-2">{{ $tag->title }}</h1>
                     <a href="{{ route('admin.tag.edit', $tag->id) }}" class="text-success">
                         <i class="fa fa-pencil-alt"></i>
                     </a>
@@ -45,7 +45,7 @@
                                     </tr>
                                 <tr>
                                     <td>Название</td>
-                                    <td>{{ $tag->name }}</td>
+                                    <td>{{ $tag->title }}</td>
                                 </tr>
                             </table>
                         </div>

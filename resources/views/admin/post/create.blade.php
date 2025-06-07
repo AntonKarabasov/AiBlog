@@ -86,6 +86,26 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
+                        <div class="form-group w-50">
+                            <label>Теги</label>
+                            <select
+                                class="select2 select2-hidden-accessible"
+                                name="tag_ids[]"
+                                multiple=""
+                                data-placeholder="Выберите теги"
+                                style="width: 100%;"
+                                aria-hidden="true"
+                            >
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tag_ids', [])) ? 'selected' : '' }}>
+                                        {{ $tag->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('tags')
+                                <div class="text-danger"> {{ $message }} </div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Добавить</button>
                         </div>

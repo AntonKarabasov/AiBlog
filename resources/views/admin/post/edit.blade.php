@@ -46,6 +46,9 @@
                         </div>
                         <div class="form-group w-50">
                             <label for="exampleInputFile">Добавить превью</label>
+                            <div class="w-25">
+                                <img src="{{ asset($post->preview_image) }}" alt="" class="w-50">
+                            </div>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile" name="preview_image">
@@ -61,6 +64,9 @@
                         </div>
                         <div class="form-group w-50">
                             <label for="exampleInputFile">Добавить главное изображение</label>
+                            <div class="w-25">
+                                <img src="{{ asset($post->main_image) }}" alt="" class="w-50">
+                            </div>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile" name="main_image">
@@ -85,6 +91,27 @@
                             </select>
                             @error('category_id')
                                 <div class="text-danger"> {{ $message }} </div>
+                            @enderror
+                        </div>
+                        <div class="form-group w-50">
+                            <label>Теги</label>
+                            <select
+                                class="select2 select2-hidden-accessible"
+                                name="tag_ids[]"
+                                multiple=""
+                                data-placeholder="Выберите теги"
+                                style="width: 100%;"
+                                aria-hidden="true"
+                            >
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}" {{ is_array($post->tags->pluck('id')) && in_array($tag->id, $post->tags->pluck('id')) ? 'selected' : '' }}>
+                                        {{ $tag->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('tags')
+                                <div class="text-danger"> {{ $message }} </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Обновить</button>

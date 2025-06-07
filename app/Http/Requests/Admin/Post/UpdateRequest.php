@@ -28,7 +28,9 @@ class UpdateRequest extends FormRequest
             'content' => 'required|string',
             'preview_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|integer|exists:categories,id',
+            'tag_ids' => 'nullable|array',
+            'tag_ids.*' => 'nullable|integer|exists:tags,id'
         ];
     }
 }

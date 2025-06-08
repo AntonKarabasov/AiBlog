@@ -8,22 +8,15 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
+    /**
+     * @throws \Throwable
+     */
     public function __invoke(StoreRequest $request): RedirectResponse
     {
-        try {
-            $data = $request->validated();
-            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
-
-            $post = Post::firstOrCreate($data);
-            $post->tags()->attach($tagIds);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        $data = $request->validated();
+        $this->service->store($data);
 
         return redirect()->route('admin.post.index');
     }

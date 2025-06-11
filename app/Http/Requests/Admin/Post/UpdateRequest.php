@@ -33,4 +33,24 @@ class UpdateRequest extends FormRequest
             'tag_ids.*' => 'nullable|integer|exists:tags,id'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Поле обязательно для заполнения',
+            'title.string' => 'Поле должно быть строкой',
+            'content.required' => 'Поле обязательно для заполнения',
+            'content.string' => 'Поле должно быть строкой',
+            'preview_image.image' => 'Поле должно быть изображением',
+            'preview_image.max' => 'Максимальный размер файла 2Мб',
+            'main_image.image' => 'Поле должно быть изображением',
+            'main_image.max' => 'Максимальный размер файла 2Мб',
+            'category_id.required' => 'Поле обязательно для заполнения',
+            'category_id.integer' => 'Поле должно быть числом',
+            'category_id.exists' => 'Поле должно быть числом',
+            'tag_ids.array' => 'Поле должно быть массивом',
+            'tag_ids.*.integer' => 'Поле должно быть числом',
+            'tag_ids.*.exists' => 'Тег не найден',
+        ];
+    }
 }

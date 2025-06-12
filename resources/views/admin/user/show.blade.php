@@ -51,6 +51,16 @@
                                     <td>Email</td>
                                     <td>{{ $user->email }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Роль</td>
+                                    <td>
+                                        @if ($user->isAdmin())
+                                            <span class="badge badge-success">Админ</span>
+                                        @else
+                                            <span class="badge badge-danger">Пользователь</span>
+                                        @endif
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>

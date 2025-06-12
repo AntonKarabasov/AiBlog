@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
+            'role' => 'required|integer'
         ];
     }
 
@@ -41,6 +42,8 @@ class StoreRequest extends FormRequest
             'password.required' => 'Поле обязательно для заполнения',
             'password.string' => 'Поле должно быть строкой',
             'password.min' => 'Поле должно быть не менее 8 символов',
+            'role.required' => 'Поле обязательно для заполнения',
+            'role.integer' => 'Поле должно быть числом',
         ];
     }
 }

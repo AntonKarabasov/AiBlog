@@ -25,7 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
+            'role' => 'required|integer'
         ];
     }
 
@@ -37,6 +38,8 @@ class UpdateRequest extends FormRequest
             'email.required' => 'Поле обязательно для заполнения',
             'email.email' => 'Поле должно быть email',
             'email.unique' => 'Пользователь с таким email уже существует',
+            'role.required' => 'Поле обязательно для заполнения',
+            'role.integer' => 'Поле должно быть числом',
         ];
     }
 }

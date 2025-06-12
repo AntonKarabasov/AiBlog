@@ -40,6 +40,7 @@
                                     <th>ID</th>
                                     <th>Имя</th>
                                     <th>Email</th>
+                                    <th>Роль</th>
                                     <th colspan="3" class="text-center">Действия</th>
                                 </tr>
                                 </thead>
@@ -49,6 +50,13 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->isAdmin())
+                                                <span class="badge badge-success">Админ</span>
+                                            @else
+                                                <span class="badge badge-danger">Пользователь</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.user.show', $user->id) }}">
                                                 <i class="fa fa-eye"></i>

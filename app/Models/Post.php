@@ -25,4 +25,19 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
+
+    public function getPreviewImageLink(): string
+    {
+        return asset('storage/' . $this->attributes['preview_image']);
+    }
+
+    public function getMainImageLink(): string
+    {
+        return asset('storage/' . $this->attributes['main_image']);
+    }
+
+    public function likedUsers(): belongsToMany
+    {
+        return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
+    }
 }

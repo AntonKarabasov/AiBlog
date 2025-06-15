@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Carbon::setLocale(config('app.locale'));
+        Blade::directive('monthGenitive', function ($expression) {
+            return "<?php echo ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][{$expression}->month - 1]; ?>";
+        });
         Paginator::useBootstrap();
     }
 }

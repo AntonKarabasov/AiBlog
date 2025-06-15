@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,5 +40,22 @@ class Post extends Model
     public function likedUsers(): belongsToMany
     {
         return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
+    }
+
+    public function comments(): belongsToMany
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    public function getFormattedDateAttribute(): string
+    {
+        $months = [
+            'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
+        ];
+
+        $date = $this->created_at instanceof Carbon ? $this->created_at : Carbon::parse($this->created_at);
+
+        return $date->day . ' ' . $months[$date->month - 1] . ', ' . $date->year . ' ' . $date->format('H:i');
     }
 }

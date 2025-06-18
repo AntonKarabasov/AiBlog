@@ -24,6 +24,9 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="edicaMainNav">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
+                    </li>
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>

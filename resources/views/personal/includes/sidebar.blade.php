@@ -12,6 +12,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('post.index') }}" class="nav-link">
+                    <i class="nav-icon fa fa-blog"></i>
+                    <p>
+                        Блог
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('personal.liked.index') }}" class="nav-link">
                     <i class="nav-icon fa fa-heart"></i>
                     <p>

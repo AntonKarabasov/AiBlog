@@ -16,25 +16,30 @@
 <div class="edica-loader"></div>
 <header class="edica-header">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
             <a class="navbar-brand" href="{{ route('main.index') }}"><img src="{{asset('assets/images/logo.svg')}}" alt="Edica"></a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="edicaMainNav">
-                <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    @guest()
+            <div class="collapse navbar-collapse justify-content-end" id="edicaMainNav">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>
                         </li>
                     @endguest
-                    @auth()
+
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('personal.main.index') }}">Личный кабинет</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Выход</a>
                         </li>
                     @endauth
                 </ul>
+            </div>
         </nav>
     </div>
 </header>

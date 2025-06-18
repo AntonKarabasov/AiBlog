@@ -18,6 +18,8 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
 
+    protected $withCount = ['likedUsers'];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

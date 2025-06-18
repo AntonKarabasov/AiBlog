@@ -11,7 +11,32 @@
                         <div class="blog-post-thumbnail-wrapper">
                             <img src="{{ url($post->getPreviewImageLink()) }}" alt="blog post">
                         </div>
-                        <p class="blog-post-category">{{ $post->category->title }}</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="blog-post-category">{{ $post->category->title }}</p>
+                            @auth()
+                                <div class="d-flex align-items-center">
+                                    <span>{{ $post->liked_users_count }}</span>
+                                    <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                        @csrf
+                                        @if((auth()->user()->likedPosts->contains($post->id)))
+                                            <button class="border-0 bg-transparent text-danger">
+                                                <i class="fas fa-heart"></i>
+                                            </button>
+                                        @else
+                                            <button class="border-0 bg-transparent">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                        @endif
+                                    </form>
+                                </div>
+                            @endauth
+                            @guest()
+                                <div class="d-flex align-items-center">
+                                    <span>{{ $post->liked_users_count }}</span>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            @endguest
+                        </div>
                         <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                             <h6 class="blog-post-title">{{ $post->title }}</h6>
                         </a>
@@ -33,7 +58,23 @@
                                 <div class="blog-post-thumbnail-wrapper">
                                     <img src="{{ url($post->getPreviewImageLink()) }}" alt="blog post">
                                 </div>
-                                <p class="blog-post-category">{{ $post->category->title }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="blog-post-category">{{ $post->category->title }}</p>
+                                    @auth()
+                                        <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                            @csrf
+                                            @if((auth()->user()->likedPosts->contains($post->id)))
+                                                <button class="border-0 bg-transparent text-danger">
+                                                    <i class="fas fa-heart"></i>
+                                                </button>
+                                            @else
+                                                <button class="border-0 bg-transparent">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                            @endif
+                                        </form>
+                                    @endauth
+                                </div>
                                 <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                     <h6 class="blog-post-title">{{ $post->title }}</h6>
                                 </a>

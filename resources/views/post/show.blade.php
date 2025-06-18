@@ -29,15 +29,17 @@
                             @endforeach
                         </div>
                     </section>
-                    <section class="comment-list mb-5">
-                        <h2 class="section-title mb-5" data-aos="fade-up">Комментарии {{ $post->comments_count == 0 ? '' : ($post->comments_count) }}</h2>
+                    <section class="comment-list">
+                        <h2 class="section-title mb-3" data-aos="fade-up">Комментарии {{ $post->comments_count == 0 ? '' : ($post->comments_count) }}</h2>
                         @foreach($post->comments as $comment)
-                            <div class="comment-text mb-3">
-                                <span class="username">
-                                    {{ $comment->user->name }}
-                                    <span class="text-muted float-right">{{ $comment->formatted_date }}</span>
-                                </span>
-                                {{ $comment->content }}
+                            <div class="media mb-4 p-3 border rounded shadow-sm">
+                                <div class="media-body">
+                                    <h6 class="mt-0 mb-1 d-flex justify-content-between align-items-center">
+                                        <span>{{ $comment->user->name }}</span>
+                                        <small class="text-muted">{{ $comment->formatted_date }}</small>
+                                    </h6>
+                                    <p class="mb-0">{{ $comment->content }}</p>
+                                </div>
                             </div>
                         @endforeach
                     </section>
@@ -45,6 +47,7 @@
                         <section class="comment-section">
                             <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>
                             <form action="{{ route('post.comment.store', $post->id) }}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="form-group col-12" data-aos="fade-up">
                                         <label for="comment" class="sr-only">Комментарий</label>

@@ -11,7 +11,6 @@ class StoreController extends Controller
 {
     public function __invoke(Post $post, StoreRequest $request)
     {
-        dd($post, $request);
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;

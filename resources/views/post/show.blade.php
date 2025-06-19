@@ -37,7 +37,7 @@
                     @endauth
                     @guest()
                         <div class="d-flex align-items-center">
-                            <span>{{ $post->liked_users_count }}</span>
+                            <span class="mr-1">{{ $post->liked_users_count }}</span>
                             <i class="far fa-heart"></i>
                         </div>
                     @endguest
